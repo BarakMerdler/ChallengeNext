@@ -12,4 +12,4 @@ do
 	sudo useradd "$newUser"
 	echo "$newUser created"
  
-done < "/tmp/newusers/newusers"
+done < "../newusers/newusers"
