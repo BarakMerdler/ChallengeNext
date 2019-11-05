@@ -1,0 +1,15 @@
+#!/bin/bash
+
+while read line; 
+do 
+	echo $line;
+	first="$(cut -d' ' -f1 <<<"$line")"
+	first="$(echo "$first" | tr '[:upper:]' '[:lower:]')"
+	first="$(echo "${first:0:1}")"
+        last="$(cut -d' ' -f2 <<<"$line")"
+	last="$(echo "$last" | tr '[:upper:]' '[:lower:]')"
+	newUser="${first}${last}"
+	sudo useradd "$newUser"
+	echo "$newUser created"
+ 
+done < "/tmp/newusers/newusers"
